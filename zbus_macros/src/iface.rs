@@ -532,7 +532,7 @@ pub fn expand(args: Punctuated<Meta, Token![,]>, mut input: ItemImpl) -> syn::Re
                             ::std::result::Result::Ok(val) => ::zbus::zvariant::Value::from(val),
                             ::std::result::Result::Err(e) => {
                                 return ::std::result::Result::Err(
-                                    ::std::convert::Into::into(#zbus::Error::Variant(::std::convert::Into::into(e)))
+                                    ::std::convert::Into::into(#zbus::fdo::Error::InvalidArgs(e.to_string()))
                                 );
                             }
                         }
@@ -572,7 +572,7 @@ pub fn expand(args: Punctuated<Meta, Token![,]>, mut input: ItemImpl) -> syn::Re
                                         ::std::result::Result::Ok(val) => val,
                                         ::std::result::Result::Err(e) => {
                                             return ::std::result::Result::Err(
-                                                ::std::convert::Into::into(#zbus::Error::Variant(::std::convert::Into::into(e)))
+                                                ::std::convert::Into::into(#zbus::fdo::Error::InvalidArgs(e.to_string()))
                                             );
                                         }
                                     }))
@@ -620,7 +620,7 @@ pub fn expand(args: Punctuated<Meta, Token![,]>, mut input: ItemImpl) -> syn::Re
                             }
                             ::std::result::Result::Err(e) => {
                                 ::std::result::Result::Err(
-                                    ::std::convert::Into::into(#zbus::Error::Variant(::std::convert::Into::into(e))),
+                                    ::std::convert::Into::into(#zbus::fdo::Error::InvalidArgs(e.to_string())),
                                 )
                             }
                         }
